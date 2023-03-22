@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <!--<div onload="myFunction()">-->
+        <!-- http://getbootstrap.com/docs/4.1/components/alerts/ -->
+        {% if status == "error" %}
+            <div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading">{{ status }}</h4>
+                <p>{{ message }}</p>
+            </div>
+
+        {% else %}
+            <div class="alert alert-success" role="alert" value = "/home" id = "testid">
+                <h4 class="alert-heading">{{ status }}</h4>
+                <p>{{ message }}</p>
+            </div>
+
+        {% endif %}
+    <!--</div>-->
+/email_confirmation/{{token}}
+<script>
+     window.setTimeout(function(){
+
+       // Move to a new location or you can do something else
+       window.location.href = '{{ redirect_path }}';
+
+       }, 3000);
+ </script>
+
+{% endblock %}

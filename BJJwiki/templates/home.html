@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+    <div class="centered">
+        <h1 class="mb-3">Home Page</h1>
+    <div class="centered">
+        <img src="/static/images/logo.png" alt="logo" height="25%" width="25%">
+    </div>
+    </div>
+    <div class="introduction">
+        <div class="paragraph">
+            Welcome to my CS50 final project! This project's purpose is to create a space where Brazilian Jiu Jitsu athletes
+            can learn new techniques, as well as contribute to a database of knowledge. This site is operated primarily
+            through the navbar at the top. The Navbar can be used to filter techniques by both position and
+            category.
+        </div>
+        <div class="paragraph">
+            In the future, I will add more functionality to the website such as a login system, an administrator system,
+            page revision history, a voting system, custom user home pages ect. I believe, though, that the current site is
+            enough to satisfy the scope of the CS50 final project.
+        </div>
+
+        {{ session.get("user")["email"]}}
+   </div>
+
+{% endblock %}

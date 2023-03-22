@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">First name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Age Division</th>
+      <th scope="col">Belt</th>
+      <th scope="col">Weight Class</th>
+      <th scope="col">Academy</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for competitors in competitors %}
+      <tr>
+        {% for i in range(7) %}
+          <td>{{ competitors[i] }}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+    <div class="right">
+        <form action="/technique" method="post">
+            <div class="edit_button">
+                <select class="selectpicker" name="technique_variation" title=" Alternate Variations " data-style="black" onchange = "this.form.submit()">
+                    {% for variations in variations %}
+                        <option value="{{ variations["id"] }}"> {{ variations["username"] }}| Score: ({{ variations["score"] }})</option>
+                    {% endfor %}
+                    <option data-divider="true"></option>
+                    {% if session.get("user") %}
+                        <option value = -2>Add a new Variation</option>
+                    {% else %}
+                        <option value = -3>Log in to add a new Variation</option>
+                    {% endif %}
+                </select>
+            </div>
+        </form>
+    </div>
+    <div class="centered">
+        <h1 class="title">
+            {{ session["technique"][0]["name"] }}<sup class = "title_superscript">{{ session["technique"][0]["score"] }}</sup>
+            <div class="caption">
+                submitted by <a class="hlink" href="profile/{{ session["technique"][0]["username"] }}">{{ session["technique"][0]["username"] }}</a><sup>{{ score }}</sup> on {{ session["technique"][0]["date"] }}
+            </div>
+        </h1>
+    </div>
+
+    {% if session.get("user") %}
+        {% if technique_known == True %}
+            <div class="centered">
+                Technique is known
+            </div>
+
+        {% else %}
+        <form action="/use_technique" method="post">
+            <div class="centered">
+                <div class="inline left">
+                    <div class="edit_button">
+                        <select class="selectpicker" name="belt_used" title=" Top belt used on " data-style="black" required>
+                            <option value=0>None</option>
+                            <option data-divider="true"></option>
+                            <option value=1>White</option>
+                            <option value=2>Blue</option>
+                            <option value=3>Purple</option>
+                            <option value=4>Brown</option>
+                            <option value=5>Black</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary margined-button" type="submit"> Add to profile</button>
+                </div>
+            </div>
+        </form>
+        {% endif %}
+    {% endif %}
+
+    <div>
+        <div class="top_row">
+            <div class="row">
+                <div class="col">
+                    <h3>Attack Goals</h3>
+                    <div class="text_box">
+                        {{ session["technique"][0]["attack_description"] }}
+                    </div>
+                        <h3>End Position</h3>
+                        <a class = "hlink" {% if session["technique"][0]["attack_end_position"] != "N/A" %} href=" /guard/{{ session["technique"][0]["attack_end_position"] }} " {% endif %}> {{ session["technique"][0]["attack_end_position"] }} </a>
+                </div>
+                {% if session["technique"][0]["attack_demonstration"] != "URL not provided! Help by adding a youtube link" %}
+                    <div class="col">
+                {% else %}
+                    <div class="col bordered">
+                {% endif %}
+                    <div class = "centered">
+                        <h3>Attack Demonstration</h3>
+                    </div>
+                    <div class="embed-responsive-16by9 centered">
+                    {% if session["technique"][0]["attack_demonstration"] != "URL not provided! Help by adding a youtube link" %}
+                        <iframe width="560" height="315" class="embed-responsive-item" src="{{ session["technique"][0]["attack_demonstration"] }}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    {% else %}
+                        {{ session["technique"][0]["attack_demonstration"] }}
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h3>Defense Goals</h3>
+                <div class="text_box">
+                    {{ session["technique"][0]["defense_description"] }}
+                </div>
+                    <h3>End Position</h3>
+                        <a class = "hlink" {% if session["technique"][0]["defense_end_position"] != "N/A" %}href=" /guard/{{ session["technique"][0]["defense_end_position"] }} "{% endif %}>{{ session["technique"][0]["defense_end_position"] }} </a>
+            </div>
+                {% if session["technique"][0]["attack_demonstration"] != "URL not provided! Help by adding a youtube link" %}
+                    <div class="col">
+                {% else %}
+                    <div class="col bordered">
+                {% endif %}
+                <div class="centered">
+                    <h3>Defense Demonstration</h3>
+                </div>
+                <div class="embed-responsive-16by9 centered">
+                {% if session["technique"][0]["defense_demonstration"] != "URL not provided! Help by adding a youtube link" %}
+                    <iframe width="560" height="315" src="{{ session["technique"][0]["defense_demonstration"] }}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                {% else %}
+                    {{ session["technique"][0]["defense_demonstration"] }}
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

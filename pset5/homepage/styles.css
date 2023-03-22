@@ -1,0 +1,41 @@
+body
+{
+    text-align: center;
+    text-indent: 50px;
+    background-color: lightgrey;
+}
+
+header
+{
+    text-align: left;
+    font-size: large;
+}
+
+main
+{
+    font-size: medium;
+}
+
+footer
+{
+    font-size: small;
+}
+
+table
+{
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th
+{
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even)
+{
+  background-color: #dddddd;
+}

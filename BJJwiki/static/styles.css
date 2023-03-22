@@ -1,0 +1,293 @@
+body
+{
+  background-color: lightgrey;
+}
+
+.bootstrap-select {
+  padding-left: 0px;
+}
+
+.navselect{
+  margin-bottom: 5%;
+}
+
+.dropdown-toggle{
+  background-color: white;
+}
+
+.filter-option-inner-inner{
+  color: black;
+}
+.title_superscript{
+   vertical-align: super;
+   font-size: 15px;
+
+}
+.centered{
+  text-align: center;
+}
+
+.left{
+  text-align: left;
+}
+
+.right{
+  text-align: right;
+
+}
+
+.title{
+  display: inline-block;
+}
+
+.caption{
+  font-size: 12px;
+}
+
+.text_box{
+  padding-bottom: 80px;
+  white-space: pre-line;
+  margin-top: -1.5em;
+  overflow-wrap: break-word;
+  width: 35vw;
+}
+
+.title_entry{
+  width: 100%;
+  vertical-align: top
+}
+
+.top_row{
+  padding-bottom: 80px;
+  padding-top: 30px;
+}
+
+.text_box_entry{
+  padding-bottom: 20px;
+}
+
+.submit_center{
+  text-align: center;
+}
+
+.edit_button{
+  display: inline;
+
+}
+
+.paragraph{
+  text-indent:40px;
+  padding-bottom: 20px;
+}
+
+.introduction{
+  margin-right: 250px;
+  margin-left: 250px;
+}
+
+h3{
+  padding: 0px;
+}
+
+.bordered{
+  border-style: inset;
+  border-width: 3px;
+}
+
+.form-group{
+text-align: center;
+}
+
+.login-box
+{
+  width: 15%;
+  margin: auto;
+}
+
+.even{
+  width: 45%;
+  margin: auto;
+  margin-top: 2vh;
+}
+
+.triple-even{
+  width: 30%;
+  margin: auto;
+  margin-top: 2vh;
+}
+
+.cleft {
+  width: 65%;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.cright {
+  width: 35%;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.tribox{
+  border: solid;
+  /*height: 33vh;*/
+  margin-bottom: 3vh;
+  padding: 2%;
+}
+
+.bottom-spaced{
+  margin-bottom: 3vh;
+}
+
+.genericbox{
+  border: solid;
+  padding: 2%;
+}
+
+.spaced{
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+.logbox{
+  height: 20vh;
+}
+
+.boxnarrow{
+  width: 50%;
+}
+
+.underline{
+  text-decoration: underline;
+}
+
+.inline{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.small-form{
+  width: 40%;
+}
+
+.row-margin{
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  padding-left: 25vw;
+  padding-right: 25vw;
+}
+
+.margined-button{
+  margin: 10px;
+}
+
+.selectspaced{
+  margin-left: 5vw;
+}
+
+
+
+
+
+
+/* The sidebar menu */
+.sidenav {
+  height: 100%;
+  position: fixed; /* Fixed Sidebar (stay in place on scroll)*/
+  z-index: 1; /* Stay on top */
+  top: 5vh; /* Stay at the top */
+  left: 0;
+  background-color: darkgrey; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+  /*transition: 0.3s;*/
+  width: 0px;
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  color: black;
+  display: block;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: white;
+}
+
+/* Style page content */
+.main {
+  margin-left: 160px; /* Same as the width of the sidebar */
+  padding: 0px 10px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 90%;
+}
+
+#myUL {
+  list-style-type: none;
+  padding: 0;
+  margin: 5%;
+  overflow: scroll;
+  height: 60vh;
+  background: white;
+}
+
+#myUL li a {
+  margin-top: -1px; /* Prevent double borders */
+  background-color: white;
+  padding: 12px;
+  text-decoration: none;
+  color: black;
+  display: blocknavbar-left-margin
+}
+
+#myUL li a:hover:not(.header) {
+  background-color: #eee;
+}
+
+.navbar-left-margin{
+  margin-left: 4vw;
+}
+
+.navbar{
+  position: fixed; /* Fixed Sidebar (stay in place on scroll)*/
+  z-index: 1; /* Stay on top */
+  top: 0vh; /* Stay at the top */
+  width: 100%;
+
+}
+
+.btn-med{
+  width: 89%;
+}
+
+.quarter-box{
+  width: 25%;
+}
+
+main{
+  margin-top: 8vh;
+  /*transition: 0.3s;*/
+
+}
+
+.hlink{
+  color: black;
+}
+
+.no-bullet{
+  list-style-type: none;
+}

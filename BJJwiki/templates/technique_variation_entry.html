@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+<form action="/technique_variation_entry" method="post">
+    <div class="centered">
+        <h1 class="title">{{ session["technique"][0]["name"] }}</h1>
+    </div>
+
+    <div>
+        <div class="top_row">
+        <div class="row">
+            <div class="col">
+                <h3>Attack Goals</h3>
+                <div class="text_box_entry">
+                    <textarea class="form-control" name="attack_description" rows="5" placeholder="Summarize how the technique is performed by the attacker"></textarea>
+                </div>
+                <h3>End Position</h3>
+                <select class="form-control" name="attack_end_position">
+                    <option>N/A</option>
+                    {% for guard_list in session.get("guard_list") %}
+                    <option>{{ guard_list["name"] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="col">
+                <h3>Attack Demonstration</h3>
+                <textarea class="form-control" name="attack_demonstration" rows="1" placeholder='Enter youtube "Share" link'></textarea>
+            </div>
+        </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h3>Defense Goals</h3>
+                <div class="text_box_entry">
+                    <textarea class="form-control" name="defense_description" rows="5" placeholder="Summarize how to defend against the technique"></textarea>
+                </div>
+
+                    <h3>End Position</h3>
+                    <select class="form-control" name="defense_end_position">
+                        <option>N/A</option>
+                        {% for guard_list in session.get("guard_list") %}
+                        <option>{{ guard_list["name"] }}</option>
+                        {% endfor %}
+                    </select>
+            </div>
+
+            <div class="col">
+                <h3>Defense Demonstration</h3>
+                <textarea class="form-control" name="defense_demonstration" rows="1" placeholder='Enter youtube "Share" link'></textarea>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class=submit_center>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </div></form>
+{% endblock %}

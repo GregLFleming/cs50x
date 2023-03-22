@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <form action="/register" method="post">
+        <div class="login-box">
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Desired Username" type="text" required>
+            </div>
+        </div>
+        <div class="login-box">
+            <div class="form-group">
+                <input class="form-control" name="password" placeholder="Desired Password" type="password" required>
+            </div>
+        </div>
+        <div class="login-box">
+            <div class="form-group">
+                <input class="form-control" name="confirmation" placeholder="Confirm Password" type="password" required>
+            </div>
+        </div>
+        <div class="login-box">
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="email" placeholder="Email" type="text" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Register</button>
+        </div>
+    </form>
+{% endblock %}

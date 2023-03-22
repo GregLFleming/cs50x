@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+<form action="/guard_variation_entry" method="post">
+    <div class="centered">
+        <h1 class="title">{{ session.get("guard")[0]["name"] }}</h1>
+    </div>
+
+    <div>
+        <div class="top_row">
+            <div class="row">
+                <div class="col">
+                    <h3>Top Position Goals</h3>
+                    <div class="text_box_entry">
+                            <textarea class="form-control" name="top_description" rows="5" placeholder="Summarize the top position strategy"></textarea>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <h3>Top Position Demonstration</h3>
+                    <textarea class="form-control" name="top_demonstration" rows="1" placeholder='Enter youtube "Share" link'></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h3>Bottom Position Goals</h3>
+                <div class="text_box_entry">
+                    <textarea class="form-control" name="bottom_description" rows="5" placeholder="Summarize the bottom position strategy"></textarea>
+                </div>
+            </div>
+            <div class="col">
+                <h3>Bottom Position Demonstration</h3>
+                <textarea class="form-control" name="bottom_demonstration" rows="1" placeholder='Enter youtube "Share" link'></textarea>            </div>
+            </div>
+        </div>
+    </div>
+    <div class=submit_center>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </div>
+</form>
+{% endblock %}

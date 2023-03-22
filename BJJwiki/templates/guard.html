@@ -1,0 +1,114 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+
+    <div class="centered">
+        <div class="right">
+            <form action="/guard" method="post">
+                <div class="edit_button">
+                    <select class="selectpicker" name="guard_variation" title=" Alternate Variations " data-style="black" onchange = "this.form.submit()">
+                        {% for variations in variations %}
+                            <option value="{{ variations["id"] }}"> {{ variations["username"] }} | Score: ({{ variations["score"] }})</option>
+                        {% endfor %}
+                        <option data-divider="true"></option>
+                        {% if session.get("user") %}
+                            <option value = -2>Add a new Variation</option>
+                        {% else %}
+                            <option value = -3> Log in to add a new Variation</option>
+                        {% endif %}
+                    </select>
+                </form>
+            </div>
+        </div>
+        <h1 class="title">
+            {{ session.get("guard")[0]["name"] }}<sup class = "title_superscript">{{ session.get("guard")[0]["score"] }}</sup>
+            <div class="caption">
+                submitted by <a class="hlink" href="profile/{{ session.get("guard")[0]["username"] }}">{{ session.get("guard")[0]["username"] }}</a><sup>{{ score }}</sup> on {{ session.get("guard")[0]["date"] }}
+            </div>
+        </h1>
+    </div>
+    {% if session.get("user") %}
+        {% if guard_known == True %}
+            <div class="centered">
+                Position is known
+            </div>
+
+        {% else %}
+        <form action="/use_guard" method="post">
+            <div class="centered">
+                <div class="inline left">
+                    <div class="edit_button">
+                        <select class="selectpicker" name="belt_used" title=" Top belt used on " data-style="black" required>
+                            <option value=0>None</option>
+                            <option data-divider="true"></option>
+                            <option value=1>White</option>
+                            <option value=2>Blue</option>
+                            <option value=3>Purple</option>
+                            <option value=4>Brown</option>
+                            <option value=5>Black</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary margined-button" type="submit"> Add to profile</button>
+                </div>
+            </div>
+        </form>
+        {% endif %}
+    {% endif %}
+
+    <div>
+        <div class="top_row">
+            <div class="row">
+                <div class="col">
+                    <h3>Top Position Goals</h3>
+                    <div class="text_box">
+                        {{ session.get("guard")[0]["top_description"] }}
+                    </div>
+                </div>
+                    {% if session.get("guard")[0]["top_demonstration"] != "URL not provided! Help by adding a youtube link" %}
+                        <div class="col">
+                    {% else %}
+                        <div class="col bordered">
+                   {% endif %}
+                    <div class="centered">
+                        <h3>Top Position Demonstration</h3>
+                    </div>
+                    <div class="embed-responsive-16by9 centered">
+                        {% if session.get("guard")[0]["top_demonstration"] != "URL not provided! Help by adding a youtube link" %}
+                            <iframe width="560" height="315" class="embed-responsive-item" src="{{ session.get("guard")[0]["top_demonstration"] }}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        {% else %}
+                            {{ session.get("guard")[0]["top_demonstration"] }}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h3>Bottom Position Goals</h3>
+                <div class="text_box">
+                    {{ session.get("guard")[0]["bottom_description"] }}
+                </div>
+            </div>
+            {% if session.get("guard")[0]["top_demonstration"] != "URL not provided! Help by adding a youtube link" %}
+                <div class="col">
+            {% else %}
+                <div class="col bordered">
+            {% endif %}
+            <div class="centered">
+                <h3>Bottom Position Demonstration</h3>
+            </div>
+                <div class="embed-responsive-16by9 centered">
+                    {% if session.get("guard")[0]["bottom_demonstration"] != "URL not provided! Help by adding a youtube link" %}
+                        <iframe width="560" height="315" class="embed-responsive-item" src="{{ session.get("guard")[0]["bottom_demonstration"] }}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    {% else %}
+                        {{ session.get("guard")[0]["bottom_demonstration"] }}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

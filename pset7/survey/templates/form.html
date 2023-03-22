@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+    <h1 class="mb-3">Tournament Register Form</h1>
+
+    <!-- http://getbootstrap.com/docs/4.1/components/forms/ -->
+    <form action="/form" method="post">
+        <div class="form-group row">
+            <div class-"col-xs-2">
+                <input class="form-control" type="text" placeholder="First Name" name="firstname" required>
+                <br>
+                <input class="form-control" type="text" placeholder="Last Name" name="lastname" required>
+                <br>
+                <input class="form-control" type="text" placeholder="Academy" name="academy" required>
+                <br>
+                <select class="form-control" name="age" required>
+                    <option disabled selected value>Age Division</option>
+                    <option>Adults</option>
+                    <option>Masters 1 | (30-35)</option>
+                    <option>Masters 2 | (36-40)</option>
+                    <option>Masters 3 | (41-45)</option>
+                    <option>Masters 4 | (46-50)</option>
+                    <option>Masters 5 | (51 & up)</option>
+                </select>
+                <br>
+                <select class="form-control" name="belt" required>
+                    <option disabled selected value>Belt Color</option>
+                    <option>White</option>
+                    <option>Blue</option>
+                    <option>Purple</option>
+                    <option>Brown</option>
+                    <option>Black</option>
+                </select>
+                <br>
+                <select class="form-control" name="weight" required>
+                    <option disabled selected value>Weight Division</option>
+                    <option>Rooster | 130 & Under</option>
+                    <option>Light Feather | 141 & Under</option>
+                    <option>Feather | 154 & Under</option>
+                    <option>Light | 168 & Under</option>
+                    <option>Middle | 182 & Under</option>
+                    <option>Medium Heavy | 195 & Under</option>
+                    <option>Heavy | 208 & Under</option>
+                    <option>Super Heavy | 222 & Under</option>
+                    <option>Ultra Heavy | 223 & Up</option>
+                </select>
+                <br>
+                Gender
+                <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input" id="Male" name="gender" type="radio" value="Male" required>
+                        <label class="form-check-label" for="Absolute">
+                            Male
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" id="Female" name="gender" type="radio" value="Female">
+                        <label class="form-check-label" for="Absolute">
+                            Female
+                        </label>
+                    </div>
+                </div>
+                <!-- http://getbootstrap.com/docs/4.1/components/buttons/ -->
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+
+
+    <script>
+
+    /*unused*/
+
+    </script>
+
+{% endblock %}

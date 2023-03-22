@@ -1,0 +1,136 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+    <h1 class="mb-3 centered">{{ session.get("user")["username"] }} <sup>{{ session.get("user")["score"] }}</sup></h1>
+</div>
+
+<div class="row">
+    <div class="column cleft">
+        <h3 class="centered">Statistics</h3>
+        <div class="tribox">
+            Standing offense: &nbsp&nbsp&nbsp&nbsp&nbsp|||<br>
+            Standing defense:&nbsp&nbsp&nbsp&nbsp&nbsp||||||||||<br>
+            Top passing:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp|||||||||||||||||||<br>
+            Top submissions:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp||||||||||<br>
+            Bottom sweeps:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp||||||||||||||||||||||||||||||||||||<br>
+            Bottom submissions:|||||||||||||||||||<br>
+        </div>
+        <h3 class="centered">Most Developed Positions</h3>
+        <div class="tribox">
+            <div class="row">
+                <div class="column even centered">
+                    <h5 class = "underline">Top</h1>
+                    1.) Position A<br>
+                    2.) Position B<br>
+                    3.) Position C<br>
+                    4.) Position D<br>
+                    5.) Position E<br>
+                </div>
+                <div class="column even">
+                    <h5 class = "underline">Bottom</h1>
+                    1.) Position A<br>
+                    2.) Position B<br>
+                    3.) Position C<br>
+                    4.) Position D<br>
+                    5.) Position E<br>
+                </div>
+            </div>
+        </div>
+        <h3 class="centered">Personal Knowledge</h3>
+        <div class="tribox">
+            <div class="row">
+                <div class="column triple-even centered">
+                    <h5 class="underline">Known Techniques</h1>
+                    <ul class = "left">
+                        {% for techniques_known in techniques_known %}
+                            <a class="hlink" href="/technique/{{ techniques_known["id"] }}"><li>{{ techniques_known["name"] }}</li></a>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="column triple-even centered">
+                    <h5 class="underline">Known Positions</h1>
+                    <ul class = "left">
+                        {% for positions_known in positions_known %}
+                            <a class="hlink" href="/guard/{{ positions_known["name"] }}"><li>{{ positions_known["name"] }}</li></a>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="column triple-even centered">
+                    <h5 class="underline">Top Belt Used On</h1>
+                    •Filtered category 1<br>
+                    •Filtered category 2<br>
+                    •Filtered category 3<br>
+                    •Filtered category 4<br>
+                    •Filtered category 5<br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="column cright">
+        <div class = "genericbox boxnarrow">
+            <h5 class="centered">Profile Controls</h1>
+            -Change password<br>
+            -Change school affiliation<br>
+            -Set profile to private<br>
+        </div>
+        <div class = "genericbox spaced">
+            <h5 class="centered">Top Contributions</h1>
+            <ol>
+                {% for top_contributions in top_contributions %}
+                    <a class="hlink" {% if top_contributions["type"] == "Technique" %} href="/technique/{{ top_contributions["id"] }}" {% else %} href="/guard/{{ top_contributions["name"] }}" {% endif %}><li>{{ top_contributions["name"] }} | Score: {{ top_contributions["score"] }}</li></a>
+                {% endfor %}
+            </ol>
+        </div>
+        <div class= "spaced">
+            <h5 class="centered">Mat Time</h1>
+            <div class = "genericbox logbox">
+            <br>
+            <br>
+            This will be a graph of the hours spent training ont he y axis and a timeline on the x axis
+            <br>
+            <br>
+            </div>
+            <form action="/profile" method="POST">
+                <button class="btn btn-primary inline" type="submit">Submit</button>
+                <input class="form-control small-form inline" name="session_time" rows="1" placeholder="Session time in hours" type= "number" min="1" max="24" required></textarea>
+            </form>
+        </div>
+
+        <div class= "spaced">
+            <h5 class="centered">Submission log</h1>
+            <div class = "genericbox logbox">
+            <br>
+            <br>
+            This will be a graph of submissions on the y axis and a timeline on the x axis
+            <br>
+            <br>
+            </div>
+
+            <form action="/profile" method="POST">
+                <button class="btn btn-primary" type="submit">Submit</button>
+                <select class="selectpicker inline col-sm-5" name="submission" title=" Select a Submission " data-style="black" data-live-search="true">
+                    {% for submissions_known in submissions_known %}
+                        <option value="{{ submissions_known["id"] }}"> {{ submissions_known["name"] }} | Score: ({{ submissions_known["score"] }})</option>
+                    {% endfor %}
+                </select>
+                <select class="selectpicker inline col-sm-4" name="belt_submitted" title=" Belt Submitted " data-style="black">
+                        <option value="1">White</option>
+                        <option value="1">Blue</option>
+                        <option value="1">Purple</option>
+                        <option value="1">Brown</option>
+                        <option value="1">Black</option>
+                </select>
+            </form>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+</body>
+{% endblock %}
